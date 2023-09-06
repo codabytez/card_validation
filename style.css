@@ -1,0 +1,225 @@
+:root {
+  --primary: #f5fafd;
+  --quaternary: #c3b7b7;
+  --senary: #66475d;
+}
+
+* {
+  margin: 0;
+  border: 0;
+}
+
+.wrapper {
+  border-radius: 5px;
+  background: var(--senary);
+  height: 100%;
+}
+
+.payment_field {
+  width: 550px;
+  height: 100vh;
+  background-color: var(--quaternary);
+  border-radius: 20px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-content: center;
+}
+
+.card {
+  width: 320px;
+  height: 200px;
+  border-radius: 30px;
+  background: linear-gradient(106deg, #fe315c -0.42%, #72b1fe 92.91%);
+  margin: auto;
+  position: absolute;
+  top: 20px;
+  left: 20%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.card .card_details {
+  background: #6d1dde;
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  z-index: 1;
+}
+
+.card .card_details .upper_details,
+.lower_details {
+  height: 50%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .card_details .upper_details .card_num {
+  color: #fff;
+  font-family: Inter;
+
+  /* TODO Import inter font */
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.card .card_details .upper_details .expiry_date {
+  color: #fff;
+  font-family: Inter;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+}
+
+.card .card_details .lower_details .card_owner_name {
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.card .chip {
+  border-radius: 8px;
+  /* padding: 35px; */
+  position: relative;
+}
+
+.card .chip svg {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  z-index: 20;
+  width: 40px;
+}
+
+.card .stroke {
+  opacity: 0.6;
+  position: relative;
+  right: 0;
+}
+
+.card .stroke .curve_svg {
+  position: absolute;
+  top: 0;
+  left: 130px;
+}
+
+.card .stroke .netted_svg {
+  position: absolute;
+  top: -2px;
+  left: 170px;
+}
+
+.input_details {
+  width: 450px;
+  height: 450px;
+  background-color: #fff;
+  border-radius: 16px;
+  margin: auto;
+  position: absolute;
+  top: 150px;
+  left: 9%;
+}
+
+.input_details .input_card_details {
+  margin-top: 80px;
+}
+
+.input_details form {
+  margin: auto;
+}
+
+.input_details form label {
+  padding: 10px 20px;
+  display: block;
+  color: #000;
+  font-family: inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 10px;
+}
+
+.input_details form input,
+.input_details form select {
+  /* color: #fff; */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: 1px solid #c5c5c5;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.input_details form input:focus {
+  outline: none;
+  border-color: #888;
+}
+
+.input_details form input[name="card_number"] {
+  width: 32px;
+  margin: 0 20px;
+  text-align: center;
+}
+
+.input_details form input[name="card_name"] {
+  width: 336px;
+}
+
+.input_details form .expiry_cvv {
+  display: flex;
+  justify-content: space-between;
+  width: 385px;
+  margin: 0 0;
+}
+
+.input_details form .expiry_cvv label[for="expiration"] {
+  margin-left: 20px;
+}
+
+.input_details form .expiry_cvv label {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.input_details form .expiry_cvv .input_expiry_date input[type="date"] {
+  width: 30px;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.input_details form .expiry_cvv .card_cvv {
+  width: 100px;
+}
+
+.input_details form .expiry_cvv .card_cvv input {
+  width: 70px;
+  margin: 0;
+}
+
+.input_details form button {
+  display: flex;
+  width: 300px;
+  padding: 22px 0px 21px 0px;
+  margin: auto;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #0369bb;
+  cursor: pointer;
+}

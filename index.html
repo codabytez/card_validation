@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Card Payment</title>
+  </head>
+
+  <!-- TODO Import inter font -->
+
+  <body>
+    <main class="main">
+      <section class="wrapper">
+        <section class="payment_field">
+          <div class="card" id="card">
+            <div class="card_details">
+              <div class="upper_details">
+                <div class="card_num" id="card_num"></div>
+                <p class="expiry_date">
+                  EXP: <span id="month_expire"></span>
+                  <span id="year_expire"></span>
+                </p>
+              </div>
+              <div class="lower_details">
+                <p class="card_owner_name" id="card_owner_name"></p>
+                <img
+                  data-logo
+                  src="./assets/mastercard.svg"
+                  alt="logo "
+                  style="display: none"
+                />
+              </div>
+            </div>
+            <div class="chip">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="88"
+                height="70"
+                viewBox="0 0 88 70"
+                fill="none"
+              >
+                <rect width="87" height="70" rx="8" fill="#7E6A78" />
+                <path
+                  d="M17.5933 8.98741C17.5933 8.98741 29.3221 4.14657 29.3221 15.9018C29.3221 27.6571 16.29 23.5077 16.29 23.5077M16.29 23.5077H0M16.29 23.5077V40.7938M16.29 40.7938H0M16.29 40.7938C16.29 40.7938 33.2317 40.7938 31.9285 51.8569C30.6253 62.92 20.8513 60.8457 20.8513 60.8457"
+                  stroke="white"
+                  stroke-width="4"
+                />
+                <path
+                  d="M68.8296 55.9431C68.8296 55.9431 56.7562 60.9652 56.5534 49.2996C56.3505 37.6341 69.9298 41.5094 69.9298 41.5094M69.9298 41.5094L86.8144 41.2063M69.9298 41.5094L69.6315 24.3552M69.6315 24.3552L86.5162 24.0521M69.6315 24.3552C69.6315 24.3552 52.0715 24.6703 53.2314 13.6674C54.3913 2.66448 64.5578 4.54116 64.5578 4.54116"
+                  stroke="white"
+                  stroke-width="4"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="input_details">
+            <form class="input_card_details" action="" id="payment-form">
+              <label for="card_number">CARD NUMBER</label>
+              <div class="input_card_number" data-connected-inputs>
+                <input
+                  required
+                  type="tel"
+                  name="card_number"
+                  id="CC_1"
+                  aria-label="Credit Card First 4 Digits"
+                  minlength="4"
+                  maxlength="4"
+                  autocomplete="off"
+                  pattern="[0-9]{4}"
+                />
+                <input
+                  required
+                  type="tel"
+                  name="card_number"
+                  id="CC_2"
+                  aria-label="Credit Card Second 4 Digits"
+                  minlength="4"
+                  maxlength="4"
+                  autocomplete="off"
+                  pattern="[0-9]{4}"
+                />
+                <input
+                  required
+                  type="tel"
+                  name="card_number"
+                  id="cc_3"
+                  aria-label="Credit Card Third 4 Digits"
+                  maxlength="4"
+                  autocomplete="off"
+                  pattern="[0-9]{4}"
+                />
+                <input
+                  required
+                  type="tel"
+                  name="card_number"
+                  id="cc_4"
+                  aria-label="Credit Card Last 4 Digits"
+                  maxlength="4"
+                  autocomplete="off"
+                  pattern="[0-9]{4}"
+                />
+              </div>
+              <div class="input_card_name">
+                <label for="card_name">CARDHOLDER’S NAME</label>
+                <input required type="text" name="card_name" id="card_name" />
+              </div>
+              <div class="expiry_cvv">
+                <div class="input_expiry_date">
+                  <label for="expiration">EXPIRATION DATE</label>
+                  <select
+                    name="month"
+                    id="expiration-month"
+                    aria-label="Expiration Month"
+                    required
+                    data-expiration-month
+                  >
+                    <option></option>
+                  </select>
+                  <select
+                    name="year"
+                    id="expiration-year"
+                    aria-label="Expiration Year"
+                    required
+                    data-expiration-year
+                  >
+                    <option></option>
+                  </select>
+                </div>
+                <div class="card_cvv">
+                  <label for="card_name">CVV</label>
+                  <input
+                    required
+                    type="tel"
+                    name="cvv"
+                    id="cvv"
+                    aria-label="cvv"
+                    minlength="3"
+                    maxlength="4"
+                  />
+                </div>
+              </div>
+              <button id="submit-button">Submit Payment</button>
+              <div id="payment-success-message" style="display: none">
+                Payment Successful!
+              </div>
+            </form>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
