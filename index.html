@@ -16,21 +16,23 @@
           <div class="card" id="card">
             <div class="card_details">
               <div class="upper_details">
-                <div class="card_num" id="card_num"></div>
-                <p class="expiry_date">
-                  EXP: <span id="month_expire"></span>
-                  <span id="year_expire"></span>
-                </p>
+                <div class="card_num" style="font-style: italic" id="card_num">
+                  XXXX XXXX XXXX XXXX
+                </div>
+                <div class="expiry_date">
+                  EXPIRY DATE
+                  <div class="exp">
+                    <span id="month_expire">06</span>
+                    <span id="year_expire">04</span>
+                  </div>
+                </div>
               </div>
               <div class="lower_details">
                 <p class="card_owner_name" id="card_owner_name"></p>
-                <img
-                  data-logo
-                  src="./assets/mastercard.svg"
-                  alt="logo "
-                  style="display: none"
-                />
               </div>
+            </div>
+            <div class="logo">
+              <img data-logo src="" alt="logo " style="display: none" />
             </div>
             <div class="chip">
               <svg
@@ -64,6 +66,7 @@
                   name="card_number"
                   id="CC_1"
                   aria-label="Credit Card First 4 Digits"
+                  placeholder="0000"
                   minlength="4"
                   maxlength="4"
                   autocomplete="off"
@@ -75,6 +78,7 @@
                   name="card_number"
                   id="CC_2"
                   aria-label="Credit Card Second 4 Digits"
+                  placeholder="0000"
                   minlength="4"
                   maxlength="4"
                   autocomplete="off"
@@ -86,6 +90,7 @@
                   name="card_number"
                   id="cc_3"
                   aria-label="Credit Card Third 4 Digits"
+                  placeholder="0000"
                   maxlength="4"
                   autocomplete="off"
                   pattern="[0-9]{4}"
@@ -96,6 +101,7 @@
                   name="card_number"
                   id="cc_4"
                   aria-label="Credit Card Last 4 Digits"
+                  placeholder="0000"
                   maxlength="4"
                   autocomplete="off"
                   pattern="[0-9]{4}"
@@ -103,7 +109,13 @@
               </div>
               <div class="input_card_name">
                 <label for="card_name">CARDHOLDER’S NAME</label>
-                <input required type="text" name="card_name" id="card_name" />
+                <input
+                  required
+                  type="text"
+                  name="card_name"
+                  placeholder="Emily Barber"
+                  id="card_name"
+                />
               </div>
               <div class="expiry_cvv">
                 <div class="input_expiry_date">
@@ -115,7 +127,7 @@
                     required
                     data-expiration-month
                   >
-                    <option></option>
+                    <option disabled selected value="">Month</option>
                   </select>
                   <select
                     name="year"
@@ -124,7 +136,7 @@
                     required
                     data-expiration-year
                   >
-                    <option></option>
+                    <option disabled selected value="">Year</option>
                   </select>
                 </div>
                 <div class="card_cvv">
@@ -134,6 +146,7 @@
                     type="tel"
                     name="cvv"
                     id="cvv"
+                    placeholder="000"
                     aria-label="cvv"
                     minlength="3"
                     maxlength="4"

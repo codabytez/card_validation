@@ -11,13 +11,12 @@ const monthSelect = document.getElementById("expiration-month");
 const outputMonth = document.getElementById("month_expire");
 const outputYear = document.getElementById("year_expire");
 const cvvInput = document.getElementById("cvv");
-const cvvOutput = document.getElementById("cvv_num");
 
 const currentYear = new Date().getFullYear();
 for (let i = currentYear; i < currentYear + 10; i++) {
   const option = document.createElement("option");
   option.value = i;
-  option.innerHTML = i.toString().slice(-2); // Get last 2 digits
+  option.innerHTML = i.toString().slice(-2);
   expirationSelect.appendChild(option);
 }
 const currentMonth = new Date().getMonth();
@@ -35,14 +34,15 @@ monthSelect.addEventListener("change", validateSelectedDate);
 // Function to validate the selected date and update the <p> tags
 function validateSelectedDate() {
   const selectedYear = parseInt(yearSelect.value);
-  const selectedMonth = monthSelect.value;
+  const selectedMonth =
+    monthSelect.value > 9 ? monthSelect.value : `0${monthSelect.value}`;
 
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1; // January is 0, so add 1
 
   if (selectedYear > currentYear || selectedYear === currentYear) {
-    const selectedDateYear = selectedYear;
+    const selectedDateYear = selectedYear - 2000;
     outputYear.textContent = selectedDateYear;
   } else {
     outputYear.textContent = "";
@@ -219,12 +219,14 @@ function updateName(e) {
   nameInput.value = name;
   const nameParts = name.split(" ");
 
-  if (nameParts.length < 3) {
+  if (nameParts.length < 4) {
     nameOutput.textContent = name;
   } else {
     const firstName = nameParts[0];
-    const lastName = nameParts[1];
-    const truncatedName = `${firstName} ${lastName}`;
+    const middleName = nameParts[1];
+    const lastName = nameParts[2];
+
+    const truncatedName = `${firstName} ${middleName} ${lastName} `;
     nameOutput.textContent = truncatedName;
     e.preventDefault();
   }
@@ -240,31 +242,15 @@ cvvInput.addEventListener("input", updateCVV);
 function updateCVV() {
   let cvv = cvvInput.value;
   cvv = cvv.replace(/\D/g, "");
-
-  cvvOutput.textContent = `CVV:${cvv}`;
 }
 
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("click", function (e) {
-  e.preventDefault();
-
   if (validateCard()) {
     showSuccessMessage();
-    resetInputs(inputFields);
   }
 });
-
-const resetInputs = (inputFields) => {
-  inputFields.forEach((input) => {
-    input.value = "";
-  });
-
-  cvvInput.value = "";
-  nameInput.value = "";
-  monthSelect.value = "";
-  yearSelect.value = "";
-};
 
 const validateCard = (e) => {
   const cardNumber = Array.from(inputFields)
@@ -275,15 +261,7 @@ const validateCard = (e) => {
   const cardMonth = monthSelect.value;
   const cardYear = yearSelect.value;
 
-  if (
-    cardNumber.length < 16 &&
-    (cardNumber[0] !== "0" ||
-      cardNumber[0] !== "1" ||
-      cardNumber[0] !== "6" ||
-      cardNumber[0] !== "7" ||
-      cardNumber[0] !== "8" ||
-      cardNumber[0] !== "9")
-  ) {
+  if (cardNumber.length < 16) {
     alert("Please enter a valid card number");
 
     return;
@@ -311,7 +289,3 @@ const validateCard = (e) => {
 
   return alert("Your card has been validated");
 };
-
-function showSuccessMessage() {
-  successMessage.style.display = "block";
-}
